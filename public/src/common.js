@@ -1,6 +1,6 @@
 
 
-define(['jquery','cookie'],function($){
+define(['jquery','template','cookie'],function($,template){
 	// NProgress.start();
 
 	// NProgress.done();
@@ -18,6 +18,17 @@ define(['jquery','cookie'],function($){
 	var loginfo=$.cookie('loginfo')&&JSON.parse($.cookie('loginfo'));
 
 	console.log(loginfo);
+
+	//定义模板
+	var source='<div class="avatar img-circle">\
+                <img src="<%= tc_avatar %>">\
+            </div>\
+            <h4><%= tc_name %></h4>' ,
+            render=template.compile(source),
+            html=render(loginfo);
+      //追加到页面中      
+      $('.profile').append(html);
+
 
 	//退出登录
 	$('#logout').on('click',function(){
