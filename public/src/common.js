@@ -1,16 +1,18 @@
 
 
-define(['jquery','template','cookie'],function($,template){
-	// NProgress.start();
+define(['jquery','template','nprogress','cookie'],function($,template,NProgress){
+	//进度条
+	NProgress.start();
 
-	// NProgress.done();
+	NProgress.done();
 
-	// $('.navs ul').prev('a').on('click', function () {
-	// 	$(this).next().slideToggle();
-	// });
-	// 
-	// 
-	// 
+	//点击左侧按钮切换
+	$('.navs ul').prev('a').on('click', function () {
+		$(this).next().slideToggle();
+	});
+	
+	
+	
 	if(document.cookie.indexOf('PHPSESSID') ==-1 && location.pathname !='/login'){
 		location.href='/login';
 	}
@@ -27,7 +29,7 @@ define(['jquery','template','cookie'],function($,template){
             render=template.compile(source),
             html=render(loginfo);
       //追加到页面中      
-      $('.profile').append(html);
+      $('.aside .profile').append(html);
 
 
 	//退出登录
